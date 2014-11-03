@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function warningMaker( obstacle ){
+        var count = 0;
+        var zones = [];
+        return function ( number, location ) {
+            count++;
+            zones.push(location);
+            var list = "";
+            for(var i = 0; i<zones.length; i++){
+                list = list + "\n" + zones[i];
+            }
+            console.log("Beware! There have been " +
+                    obstacle +
+                    " sightings in the Cove today!\n" +
+                    number +
+                    " " +
+                    obstacle +
+                    "(s) spotted at the " +
+                    location +
+                    "!\n" +
+                    "This is Alert #" +
+                    count +
+                    " today for " +
+                    obstacle +
+                    " danger.\n" +
+                    "Current danger zones are: " +
+                    list
+            );
+        };
+    }
+
+    var killerPenguinAlert = warningMaker("killer penguin");
+    var polarBearAlert = warningMaker("polar bear");
+    var icebergAlert = warningMaker("iceberg");
+    var flashBlizzardAlert = warningMaker("flash blizzard");
+    var snowYetiAlert = warningMaker("snow yeti");
+
+    snowYetiAlert(4, "My Place");
+    polarBearAlert(2, "London");
+
+</script>
+</body>
+</html>
